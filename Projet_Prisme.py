@@ -92,7 +92,7 @@ class Traitementtrivial(Traitement):
         self.result = None
     
     def run(self):
-        non_mot = [' ', ',', '.', ';', ':', '!', '\'', '(', ')', '[', ']', '/', '-', '*', '\'', '\"', '#', '…', '’']
+        non_mot = [' ','?','|', ',', '.', ';', ':', '!', '\'', '(', ')', '[', ']', '/', '-', '*', '\'', '\"', '#', '…', '’']
         comptage = {}
         m = 1
         mot = ''
@@ -130,3 +130,10 @@ class Traitementtrivialnum(Traitementtrivial):
             c+=self.result[mot]
         print(sorted(self.result.items(), key=lambda t: t[1]))
         print(f'Le nombre de mots total est {c}')
+        
+"""
+#Pour tester
+un_prisme=Prisme(Traitementtrivialnum())
+un_prisme.run("test.txt")
+un_prisme.show()
+"""
