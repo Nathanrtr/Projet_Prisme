@@ -94,20 +94,20 @@ class Traitementtrivial(Traitement):
     def run(self):
         non_mot = [' ','?','|', ',', '.', ';', ':', '!', '\'', '(', ')', '[', ']', '/', '-', '*', '\'', '\"', '#', '…', '’']
         comptage = {}
-        m = 1
-        mot = ''
+        m = 1                                                                                       #m indique si on est dans un mot ou non
+        mot = ''                                                                                    #Si m=0 : on est dans un mot, sinon m=1
         for texte in self.données:
             for char in range(len(texte)):
-                if m == 0 and texte[char] in non_mot:
+                if m == 0 and texte[char] in non_mot:                                               #On rencontre un non_mot donc le mot s'arrête
                     m = 1
                     if mot in comptage:
-                        comptage[mot]+=1
+                        comptage[mot]+=1                                                            
                     else:
                         comptage[mot]=1
                     mot = ''
-                if m == 0 and texte[char] not in non_mot:
+                if m == 0 and texte[char] not in non_mot:                                           #On est dans un mot et on rencontre une nouvelle lettre : on le rajoute au mot
                     mot+=texte[char]
-                if m == 1 and texte[char] not in non_mot:
+                if m == 1 and texte[char] not in non_mot:                                           #On était pas dans un mot mais on rencontre une lettre : le mot commence
                     m = 0
                     mot+=texte[char]
         self.result = comptage
